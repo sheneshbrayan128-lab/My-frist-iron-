@@ -3,278 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IRONHUB — Iron, Metal Sheets, Welding &amp; Hardware</title>
+<title>NMS — New Money Stores | Iron, Steel, Pipes, Sheets, Hardware &amp; Welding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-  :root{
-    --charcoal:#17191b;
-    --charcoal-2:#212427;
-    --steel:#3c4247;
-    --steel-light:#565e64;
-    --paper:#f0ede4;
-    --paper-dim:#c9c5b8;
-    --amber:#f2a900;
-    --rust:#d3541f;
-    --line: rgba(240,237,228,0.12);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--charcoal);
-    color:var(--paper);
-    font-family:'Work Sans',sans-serif;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,.display{
-    font-family:'Anton',sans-serif;
-    font-weight:400;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    line-height:1.05;
-  }
-  .mono{font-family:'JetBrains Mono',monospace;}
-  a{color:inherit;text-decoration:none;}
-  ul{list-style:none;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
-
-  /* Hazard stripe divider — signature motif */
-  .hazard{
-    height:14px;
-    background:repeating-linear-gradient(135deg,var(--amber) 0 22px,#17191b 22px 44px);
-  }
-
-  /* Header */
-  header{
-    position:sticky;top:0;z-index:100;
-    background:rgba(23,25,27,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .navbar{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1180px;margin:0 auto;}
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;}
-  .logo i{color:var(--amber);}
-  nav ul{display:flex;gap:30px;}
-  nav a{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--paper-dim);transition:color .2s;}
-  nav a:hover{color:var(--amber);}
-  .cta-btn{
-    background:var(--amber);color:var(--charcoal);font-weight:700;
-    padding:11px 22px;border-radius:2px;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;
-    display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .2s;
-    border:none;cursor:pointer;
-  }
-  .cta-btn:hover{background:var(--rust);color:var(--paper);transform:translateY(-1px);}
-  .cta-outline{
-    border:1.5px solid var(--paper-dim);color:var(--paper);
-    padding:10px 20px;border-radius:2px;font-size:14px;font-weight:600;text-transform:uppercase;
-    display:inline-flex;align-items:center;gap:8px;
-  }
-  .cta-outline:hover{border-color:var(--amber);color:var(--amber);}
-  .menu-toggle{display:none;background:none;border:none;color:var(--paper);font-size:24px;cursor:pointer;}
-
-  /* Scroll progress bar */
-  .progress-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--amber);z-index:300;transition:width .1s linear;}
-
-  /* Hero */
-  .hero{
-    position:relative;
-    padding:150px 24px 100px;
-    overflow:hidden;
-    min-height:640px;
-    display:flex;align-items:center;
-  }
-  .hero-bg{
-    position:absolute;inset:0;z-index:0;
-    background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/57/Custom_heavy_steel_structures_and_wind_power_components.jpg');
-    background-size:cover;background-position:center 60%;
-    filter:grayscale(45%) contrast(1.15) brightness(0.55);
-    transform:scale(1.08);
-  }
-  .hero::before{
-    content:"";position:absolute;inset:0;z-index:1;
-    background:
-      linear-gradient(180deg, rgba(23,25,27,0.55) 0%, rgba(23,25,27,0.75) 55%, var(--charcoal) 100%),
-      radial-gradient(circle at 85% 0%, rgba(242,169,0,0.18), transparent 55%);
-  }
-  .hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:2;}
-  .hero-inner h1, .hero-inner p, .hero-inner .eyebrow, .hero-inner .hero-ctas, .hero-inner .hero-stats{
-    opacity:0;animation:riseIn .8s ease forwards;
-  }
-  .hero-inner .eyebrow{animation-delay:.05s;}
-  .hero-inner h1{animation-delay:.15s;}
-  .hero-inner p.lead{animation-delay:.3s;}
-  .hero-inner p.sinhala{animation-delay:.38s;opacity:0;animation:riseIn .8s ease forwards;animation-delay:.4s;}
-  .hero-inner .hero-ctas{animation-delay:.5s;}
-  .hero-inner .hero-stats{animation-delay:.65s;}
-  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-  @media (prefers-reduced-motion: reduce){
-    .hero-inner h1, .hero-inner p, .hero-inner .eyebrow, .hero-inner .hero-ctas, .hero-inner .hero-stats{animation:none;opacity:1;}
-  }
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:13px;
-    letter-spacing:2px;text-transform:uppercase;margin-bottom:22px;
-  }
-  .eyebrow::before{content:"";width:26px;height:2px;background:var(--amber);display:inline-block;}
-  .hero h1{font-size:clamp(40px,6vw,74px);max-width:780px;}
-  .hero h1 span{color:var(--amber);}
-  .hero p.lead{max-width:560px;margin-top:22px;font-size:18px;color:var(--paper-dim);}
-  .hero .sinhala{font-family:'Work Sans',sans-serif;font-size:15px;color:var(--paper-dim);margin-top:8px;opacity:0.85;}
-  .hero-ctas{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
-  .hero-stats{display:flex;gap:0;margin-top:60px;border-top:1px solid var(--line);padding-top:26px;flex-wrap:wrap;}
-  .stat{flex:1;min-width:140px;padding-right:24px;}
-  .stat .num{font-family:'Anton',sans-serif;font-size:34px;color:var(--amber);}
-  .stat .label{font-size:13px;color:var(--paper-dim);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;}
-
-  section{padding:90px 0;}
-  .section-head{max-width:640px;margin-bottom:56px;}
-  .section-head .eyebrow{margin-bottom:14px;}
-  .section-head h2{font-size:clamp(30px,4vw,46px);}
-  .section-head p{color:var(--paper-dim);margin-top:14px;font-size:16px;}
-
-  /* Category overview grid */
-  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-  .cat-card{
-    background:var(--charcoal-2);border:1px solid var(--line);border-radius:3px;
-    padding:0 0 26px;position:relative;transition:transform .25s,border-color .25s;overflow:hidden;
-  }
-  .cat-card::before,.cat-card::after{
-    content:"";position:absolute;width:6px;height:6px;border-radius:50%;
-    background:var(--steel-light);top:130px;left:12px;box-shadow:
-      calc(100% - 6px) 0 0 var(--steel-light);z-index:3;
-  }
-  .cat-card::after{top:auto;bottom:12px;box-shadow:calc(100% - 6px) 0 0 var(--steel-light);}
-  .cat-card:hover{transform:translateY(-6px);border-color:var(--amber);}
-  .cat-thumb{
-    position:relative;height:150px;overflow:hidden;background:var(--steel);
-  }
-  .cat-thumb img{
-    width:100%;height:100%;object-fit:cover;
-    filter:grayscale(85%) contrast(1.1) brightness(0.75);
-    transition:filter .4s ease,transform .5s ease;
-  }
-  .cat-card:hover .cat-thumb img{filter:grayscale(0%) contrast(1.05) brightness(0.9);transform:scale(1.06);}
-  .cat-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--charcoal-2) 100%);}
-  .cat-body{padding:22px 24px 0;}
-  .cat-card i{font-size:22px;color:var(--amber);margin-bottom:14px;display:inline-block;}
-  .cat-card h3{font-size:20px;margin-bottom:10px;}
-  .cat-card p{font-size:14px;color:var(--paper-dim);margin-bottom:16px;}
-  .cat-card a.link{font-size:13px;font-weight:700;text-transform:uppercase;color:var(--paper);letter-spacing:0.5px;padding:0 24px 4px;display:inline-block;margin-left:24px;}
-  .cat-card a.link i{font-size:12px;margin:0 0 0 4px;}
-
-  /* Scroll reveal */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
-  .reveal.visible{opacity:1;transform:translateY(0);}
-  .cat-grid .cat-card:nth-child(1){transition-delay:0s;}
-  .cat-grid .cat-card:nth-child(2){transition-delay:.1s;}
-  .cat-grid .cat-card:nth-child(3){transition-delay:.2s;}
-  .cat-grid .cat-card:nth-child(4){transition-delay:.3s;}
-  .why-grid .why-card:nth-child(1){transition-delay:0s;}
-  .why-grid .why-card:nth-child(2){transition-delay:.1s;}
-  .why-grid .why-card:nth-child(3){transition-delay:.2s;}
-  .why-grid .why-card:nth-child(4){transition-delay:.3s;}
-  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}}
-
-  /* Alternating band sections for product categories */
-  .band{border-top:1px solid var(--line);}
-  .band.alt{background:var(--charcoal-2);}
-  .band-inner{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:start;}
-  .band-visual{
-    background:var(--steel);border-radius:3px;min-height:380px;position:relative;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;
-    border:1px solid var(--line);
-  }
-  .band-visual img{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    filter:grayscale(70%) contrast(1.15) brightness(0.62) sepia(8%);
-    transition:transform .6s ease, filter .5s ease;
-  }
-  .band-visual:hover img{transform:scale(1.05);filter:grayscale(20%) contrast(1.1) brightness(0.75) sepia(4%);}
-  .band-visual::before{
-    content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(160deg, rgba(242,169,0,0.16), rgba(23,25,27,0.35) 60%);
-    mix-blend-mode:multiply;
-  }
-  .band-visual i{font-size:60px;color:rgba(240,237,228,0.5);position:relative;z-index:2;}
-  .band-visual .tag{
-    position:absolute;bottom:18px;left:18px;background:var(--amber);color:var(--charcoal);
-    font-family:'JetBrains Mono',monospace;font-size:12px;padding:6px 12px;border-radius:2px;font-weight:600;z-index:3;
-  }
-  .band-text .num-tag{
-    font-family:'JetBrains Mono',monospace;color:var(--amber);font-size:13px;letter-spacing:2px;margin-bottom:10px;display:block;
-  }
-  .band-text h3{font-size:clamp(26px,3vw,36px);margin-bottom:16px;}
-  .band-text p{color:var(--paper-dim);margin-bottom:24px;max-width:520px;}
-  .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-bottom:28px;}
-  .spec-grid div{border-bottom:1px solid var(--line);padding-bottom:10px;}
-  .spec-grid .k{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--paper-dim);}
-  .spec-grid .v{font-family:'JetBrains Mono',monospace;font-size:14px;margin-top:2px;}
-
-  /* Why us */
-  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-  .why-card{padding:26px 0;border-top:2px solid var(--amber);}
-  .why-card i{font-size:22px;color:var(--amber);margin-bottom:14px;}
-  .why-card h4{font-family:'Work Sans',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;}
-  .why-card p{font-size:14px;color:var(--paper-dim);}
-
-  /* Contact */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
-  .contact-info .item{display:flex;gap:16px;margin-bottom:26px;}
-  .contact-info .item i{color:var(--amber);font-size:20px;margin-top:3px;}
-  .contact-info .item h4{font-size:15px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
-  .contact-info .item p{color:var(--paper-dim);font-size:15px;}
-  form{background:var(--charcoal-2);padding:34px;border:1px solid var(--line);border-radius:3px;}
-  form label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--paper-dim);display:block;margin-bottom:6px;}
-  form input,form select,form textarea{
-    width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);
-    padding:12px 14px;margin-bottom:18px;border-radius:2px;font-family:'Work Sans',sans-serif;font-size:14px;
-  }
-  form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--amber);border-color:transparent;}
-  form textarea{resize:vertical;min-height:100px;}
-  form button{width:100%;justify-content:center;}
-
-  footer{border-top:1px solid var(--line);padding:50px 0 26px;background:var(--charcoal-2);}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
-  .footer-grid h5{font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:var(--paper-dim);}
-  .footer-grid ul li{margin-bottom:10px;font-size:14px;}
-  .footer-grid ul li a:hover{color:var(--amber);}
-  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--paper-dim);flex-wrap:wrap;gap:12px;}
-  .social{display:flex;gap:14px;}
-  .social a{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s;}
-  .social a:hover{border-color:var(--amber);color:var(--amber);}
-
-  .whatsapp-float{
-    position:fixed;bottom:24px;right:24px;z-index:200;
-    background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;font-size:26px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.4);
-  }
-
-  @media(max-width:900px){
-    nav{position:fixed;top:65px;left:0;right:0;background:var(--charcoal);border-bottom:1px solid var(--line);
-      flex-direction:column;padding:20px 24px;display:none;}
-    nav.open{display:flex;}
-    nav ul{flex-direction:column;gap:18px;}
-    .navbar .cta-btn{display:none;}
-    .menu-toggle{display:block;}
-    .cat-grid{grid-template-columns:repeat(2,1fr);}
-    .why-grid{grid-template-columns:repeat(2,1fr);}
-    .band-inner{grid-template-columns:1fr;gap:30px;}
-    .band-visual{min-height:220px;}
-    .contact-grid{grid-template-columns:1fr;}
-    .footer-grid{grid-template-columns:1fr 1fr;}
-    .hero-stats{gap:20px;}
-  }
-  @media(max-width:520px){
-    .cat-grid{grid-template-columns:1fr;}
-    .why-grid{grid-template-columns:1fr;}
-    .footer-grid{grid-template-columns:1fr;}
-    .spec-grid{grid-template-columns:1fr;}
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -282,18 +15,24 @@
 
 <header>
   <div class="navbar">
-    <a href="#top" class="logo"><i class="fa-solid fa-industry"></i> IRONHUB</a>
+    <a href="index.html" class="brand">
+      <div class="brand-mark">NMS</div>
+      <div class="brand-word">
+        <span class="en">New Money Stores</span>
+        <span class="si">නිව් මනි ස්ටෝර්ස්</span>
+      </div>
+    </a>
     <nav id="nav">
       <ul>
-        <li><a href="#iron">Iron &amp; Steel</a></li>
-        <li><a href="#sheets">Metal Sheets</a></li>
-        <li><a href="#welding">Welding</a></li>
-        <li><a href="#hardware">Hardware</a></li>
-        <li><a href="#about">Why Us</a></li>
+        <li><a href="iron.html">Iron &amp; Steel</a></li>
+        <li><a href="pipes.html">Pipes &amp; Tubes</a></li>
+        <li><a href="sheets.html">Sheets &amp; Roofing</a></li>
+        <li><a href="hardware.html">Hardware</a></li>
+        <li><a href="welding.html">Welding &amp; Tools</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <a href="#contact" class="cta-btn"><i class="fa-solid fa-file-invoice"></i> Get a Quote</a>
+    <a href="https://wa.me/94777737602" target="_blank" class="cta-btn"><i class="fa-brands fa-whatsapp"></i> Call for Price</a>
     <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
   </div>
 </header>
@@ -301,144 +40,98 @@
 <div id="top"></div>
 
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/57/Custom_heavy_steel_structures_and_wind_power_components.jpg');"></div>
   <div class="hero-inner">
-    <span class="eyebrow">Iron · Sheets · Welding · Hardware</span>
-    <h1>Everything you need<br>to build in <span>steel.</span></h1>
-    <p class="lead">One store for iron rods, metal sheets, welding consumables, and hardware goods — sourced for contractors, workshops, and everyday builders.</p>
-    <p class="sinhala">ඔබේ ඕනෑම යකඩ, ලෝහ තහඩු හෝ වෑල්ඩින් අවශ්‍යතාවයට — විශ්වාසදායක සැපයුම්කරු.</p>
+    <span class="eyebrow">Iron · Pipes · Sheets · Hardware · Welding</span>
+    <h1>NMS — New Money Stores.<br>Everything for the <span>job.</span></h1>
+    <p class="lead">Iron buying &amp; selling, cutting and welding services, plus pipes, sheets, bars, bolts and hardware goods — all under one roof.</p>
+    <p class="sinhala">යකඩ ගැනීම, විකිණීම, කැපීම සහ පෑස්සීම — ඔබේ සියලුම හාඩ්වෙයාර් අවශ්‍යතා එකම තැනකින්.</p>
     <div class="hero-ctas">
-      <a href="#contact" class="cta-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
-      <a href="#iron" class="cta-outline"><i class="fa-solid fa-arrow-down"></i> Browse Products</a>
+      <a href="https://wa.me/94777737602" target="_blank" class="cta-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp for Price</a>
+      <a href="#departments" class="cta-outline"><i class="fa-solid fa-arrow-down"></i> Browse Products</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><div class="num">15+</div><div class="label">Years in the trade</div></div>
-      <div class="stat"><div class="num">500+</div><div class="label">SKUs in stock</div></div>
-      <div class="stat"><div class="num">24hr</div><div class="label">Quote turnaround</div></div>
-      <div class="stat"><div class="num">100%</div><div class="label">COD &amp; on-site delivery</div></div>
+      <div class="stat"><div class="num">500+</div><div class="label">Sizes in stock</div></div>
+      <div class="stat"><div class="num">5</div><div class="label">Departments</div></div>
+      <div class="stat"><div class="num">24hr</div><div class="label">Response time</div></div>
+      <div class="stat"><div class="num">100%</div><div class="label">Cutting &amp; welding on site</div></div>
     </div>
   </div>
 </section>
 
 <div class="hazard"></div>
 
-<section>
+<section class="services-strip">
+  <div class="wrap">
+    <div class="service-item">
+      <i class="fa-solid fa-right-left"></i>
+      <div><h4>Iron Buying &amp; Selling</h4><p>යකඩ ගැනීම හා විකිණීම</p></div>
+    </div>
+    <div class="service-item">
+      <i class="fa-solid fa-scissors"></i>
+      <div><h4>Iron Cutting</h4><p>යකඩ කැපීම — cut to your size</p></div>
+    </div>
+    <div class="service-item">
+      <i class="fa-solid fa-fire-flame-curved"></i>
+      <div><h4>Welding Service</h4><p>යකඩ පෑස්සීම — on site or in-store</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="departments">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">What we stock</span>
-      <h2>Four departments. One counter.</h2>
-      <p>Browse by category or send us your list — we'll quote the lot in one go.</p>
+      <h2>Five departments. One counter.</h2>
+      <p>Tap a department to see the full product range with sizes — or send your list on WhatsApp and we'll call you back with pricing.</p>
     </div>
     <div class="cat-grid">
-      <div class="cat-card reveal">
+      <a href="iron.html" class="cat-card reveal">
         <div class="cat-thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG" alt="Iron rods and steel bars" onerror="this.style.display='none'"></div>
         <div class="cat-body">
           <i class="fa-solid fa-bars"></i>
           <h3>Iron &amp; Steel</h3>
-          <p>Rods, bars, angles, channels &amp; beams in mild steel and TMT.</p>
+          <p>Rebar, round, square, flat &amp; angle bars.</p>
         </div>
-        <a href="#iron" class="link">View range <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="cat-card reveal">
+        <span class="link">View range <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      <a href="pipes.html" class="cat-card reveal">
+        <div class="cat-thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Steel_pipe.jpg" alt="Pipes and tubes" onerror="this.style.display='none'"></div>
+        <div class="cat-body">
+          <i class="fa-solid fa-grip-lines"></i>
+          <h3>Pipes &amp; Tubes</h3>
+          <p>GI &amp; PVC pipes, box tubes, all sizes.</p>
+        </div>
+        <span class="link">View range <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      <a href="sheets.html" class="cat-card reveal">
         <div class="cat-thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Mild_steel_sheet_metal_close_up.jpg" alt="Stack of metal sheets" onerror="this.style.display='none'"></div>
         <div class="cat-body">
           <i class="fa-solid fa-layer-group"></i>
-          <h3>Metal Sheets</h3>
-          <p>GI, aluminium, stainless &amp; chequered sheets, cut to size.</p>
+          <h3>Sheets &amp; Roofing</h3>
+          <p>GI sheets, box sheets, roofing gauges.</p>
         </div>
-        <a href="#sheets" class="link">View range <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="cat-card reveal">
-        <div class="cat-thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/GMAW.welding.af.ncs.jpg" alt="Welding in progress" onerror="this.style.display='none'"></div>
-        <div class="cat-body">
-          <i class="fa-solid fa-fire-flame-curved"></i>
-          <h3>Welding</h3>
-          <p>Welding machines, electrodes, wire, gas &amp; safety gear.</p>
-        </div>
-        <a href="#welding" class="link">View range <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="cat-card reveal">
+        <span class="link">View range <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      <a href="hardware.html" class="cat-card reveal">
         <div class="cat-thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Bolts_and_Nuts.jpg" alt="Nuts, bolts and hardware" onerror="this.style.display='none'"></div>
         <div class="cat-body">
           <i class="fa-solid fa-toolbox"></i>
-          <h3>Hardware &amp; Tools</h3>
-          <p>Fasteners, locks, hand tools &amp; general hardware goods.</p>
+          <h3>Hardware</h3>
+          <p>Bolts, key items, castors &amp; fittings.</p>
         </div>
-        <a href="#hardware" class="link">View range <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
+        <span class="link">View range <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      <a href="welding.html" class="cat-card reveal">
+        <div class="cat-thumb"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/GMAW.welding.af.ncs.jpg" alt="Welding and power tools" onerror="this.style.display='none'"></div>
+        <div class="cat-body">
+          <i class="fa-solid fa-bolt"></i>
+          <h3>Welding &amp; Tools</h3>
+          <p>Welding plants, grinders, drills &amp; more.</p>
+        </div>
+        <span class="link">View range <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
     </div>
-  </div>
-</section>
-
-<section class="band" id="iron">
-  <div class="wrap band-inner reveal">
-    <div class="band-visual"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG" alt="Steel reinforcement rods" onerror="this.style.display='none'"><span class="tag">DEPT. 01 — IRON &amp; STEEL</span></div>
-    <div class="band-text">
-      <span class="num-tag">01 / IRON &amp; STEEL</span>
-      <h3>Rods, bars &amp; structural steel</h3>
-      <p>Mild steel rods, TMT bars, angles, flats, channels and I-beams — stocked in standard lengths or cut to your spec.</p>
-      <div class="spec-grid">
-        <div><div class="k">Sizes</div><div class="v">6mm – 32mm dia.</div></div>
-        <div><div class="k">Grades</div><div class="v">TMT Fe 500 / Fe 500D</div></div>
-        <div><div class="k">Forms</div><div class="v">Round, square, flat, angle</div></div>
-        <div><div class="k">Supply</div><div class="v">Retail &amp; bulk / site delivery</div></div>
-      </div>
-      <a href="#contact" class="cta-btn"><i class="fa-solid fa-file-invoice"></i> Request Iron &amp; Steel Quote</a>
-    </div>
-  </div>
-</section>
-
-<section class="band alt" id="sheets">
-  <div class="wrap band-inner reveal" style="grid-template-columns:1.1fr 0.9fr;">
-    <div class="band-text">
-      <span class="num-tag">02 / METAL SHEETS</span>
-      <h3>Sheets cut to size, no wastage</h3>
-      <p>GI sheets, aluminium sheets, stainless steel, chequered plate and roofing sheets. Custom cutting available on request.</p>
-      <div class="spec-grid">
-        <div><div class="k">Thickness</div><div class="v">0.4mm – 6mm</div></div>
-        <div><div class="k">Types</div><div class="v">GI · SS · Aluminium · Chequered</div></div>
-        <div><div class="k">Finish</div><div class="v">Plain, coated, corrugated</div></div>
-        <div><div class="k">Cutting</div><div class="v">Custom sizes on request</div></div>
-      </div>
-      <a href="#contact" class="cta-btn"><i class="fa-solid fa-file-invoice"></i> Request Sheet Metal Quote</a>
-    </div>
-    <div class="band-visual"><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Mild_steel_sheet_metal_close_up.jpg" alt="Metal sheet close up" onerror="this.style.display='none'"><span class="tag">DEPT. 02 — METAL SHEETS</span></div>
-  </div>
-</section>
-
-<section class="band" id="welding">
-  <div class="wrap band-inner reveal">
-    <div class="band-visual"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/GMAW.welding.af.ncs.jpg" alt="Arc welding in progress" onerror="this.style.display='none'"><span class="tag">DEPT. 03 — WELDING</span></div>
-    <div class="band-text">
-      <span class="num-tag">03 / WELDING</span>
-      <h3>Machines, consumables &amp; safety gear</h3>
-      <p>ARC, MIG and TIG welding machines, electrodes, filler wire, cutting gas and full protective gear — everything for the workshop or the job site.</p>
-      <div class="spec-grid">
-        <div><div class="k">Machines</div><div class="v">ARC · MIG · TIG · Gas cutting</div></div>
-        <div><div class="k">Consumables</div><div class="v">Electrodes, wire, rods</div></div>
-        <div><div class="k">Safety</div><div class="v">Helmets, gloves, aprons</div></div>
-        <div><div class="k">Service</div><div class="v">Repairs &amp; spares available</div></div>
-      </div>
-      <a href="#contact" class="cta-btn"><i class="fa-solid fa-file-invoice"></i> Request Welding Quote</a>
-    </div>
-  </div>
-</section>
-
-<section class="band alt" id="hardware">
-  <div class="wrap band-inner reveal" style="grid-template-columns:1.1fr 0.9fr;">
-    <div class="band-text">
-      <span class="num-tag">04 / HARDWARE &amp; TOOLS</span>
-      <h3>Fasteners, tools &amp; general hardware</h3>
-      <p>Nuts, bolts, screws, hinges, locks, hand tools and everyday hardware goods — small parts kept in stock so a missing bolt never stops the job.</p>
-      <div class="spec-grid">
-        <div><div class="k">Fasteners</div><div class="v">Nuts, bolts, screws, anchors</div></div>
-        <div><div class="k">Fittings</div><div class="v">Hinges, locks, handles</div></div>
-        <div><div class="k">Tools</div><div class="v">Hand tools &amp; power tool accessories</div></div>
-        <div><div class="k">Misc</div><div class="v">Paints, ropes, PPE &amp; more</div></div>
-      </div>
-      <a href="#contact" class="cta-btn"><i class="fa-solid fa-file-invoice"></i> Request Hardware Quote</a>
-    </div>
-    <div class="band-visual"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Bolts_and_Nuts.jpg" alt="Nuts and bolts hardware" onerror="this.style.display='none'"><span class="tag">DEPT. 04 — HARDWARE</span></div>
   </div>
 </section>
 
@@ -447,29 +140,29 @@
 <section id="about">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Why builders choose us</span>
-      <h2>Stock, price, and someone who picks up the phone.</h2>
+      <span class="eyebrow">Why customers choose NMS</span>
+      <h2>Deep stock, honest service, and someone who answers.</h2>
     </div>
     <div class="why-grid">
       <div class="why-card reveal">
         <i class="fa-solid fa-warehouse"></i>
         <h4>Deep stock</h4>
-        <p>500+ SKUs on the floor, so most orders leave the same day.</p>
+        <p>500+ sizes across iron, pipes, sheets and hardware.</p>
       </div>
       <div class="why-card reveal">
-        <i class="fa-solid fa-tags"></i>
-        <h4>Fair, transparent pricing</h4>
-        <p>Wholesale rates for contractors, no hidden markups.</p>
+        <i class="fa-solid fa-scissors"></i>
+        <h4>Cut to size</h4>
+        <p>Iron cutting done in-store — no extra trip needed.</p>
       </div>
       <div class="why-card reveal">
-        <i class="fa-solid fa-truck-fast"></i>
-        <h4>Site delivery</h4>
-        <p>Bulk orders delivered straight to your job site.</p>
+        <i class="fa-solid fa-fire-flame-curved"></i>
+        <h4>Welding service</h4>
+        <p>In-store or on-site welding, done right.</p>
       </div>
       <div class="why-card reveal">
-        <i class="fa-solid fa-headset"></i>
-        <h4>Real advice</h4>
-        <p>Not sure what grade or gauge you need? Just ask us.</p>
+        <i class="fa-solid fa-phone"></i>
+        <h4>Real answers</h4>
+        <p>Call or WhatsApp — a real person quotes you back.</p>
       </div>
     </div>
   </div>
@@ -479,26 +172,35 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Get in touch</span>
-      <h2>Send your list. Get a quote in 24 hours.</h2>
-      <p>Tell us what you need — iron, sheets, welding gear, or hardware — and we'll get back with pricing and availability.</p>
+      <h2>Call, WhatsApp, or visit the store.</h2>
+      <p>Tell us what you need — iron, pipes, sheets, hardware, or a welding job — and we'll call you back with pricing.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
         <div class="item">
           <i class="fa-solid fa-location-dot"></i>
-          <div><h4>Visit the store</h4><p>[Store address], Sri Lanka</p></div>
+          <div>
+            <h4>Visit the store</h4>
+            <p>[Store address], Sri Lanka</p>
+            <div class="map-embed"><span>Map will be added once the exact location is confirmed</span></div>
+          </div>
         </div>
         <div class="item">
           <i class="fa-brands fa-whatsapp"></i>
-          <div><h4>WhatsApp / Call</h4><p>[+94 XX XXX XXXX]</p></div>
+          <div>
+            <h4>WhatsApp / Call</h4>
+            <p><a href="https://wa.me/94777737602" target="_blank">077 773 7602</a></p>
+            <p>075 983 7602 &middot; 072 773 7602</p>
+            <p>Landline: 031 224 1673</p>
+          </div>
         </div>
         <div class="item">
           <i class="fa-solid fa-envelope"></i>
-          <div><h4>Email</h4><p>[info@ironhub.lk]</p></div>
+          <div><h4>Email</h4><p><a href="mailto:nmspriya@gmail.com">nmspriya@gmail.com</a></p></div>
         </div>
         <div class="item">
-          <i class="fa-solid fa-clock"></i>
-          <div><h4>Hours</h4><p>Mon – Sat, 8:00 AM – 6:00 PM</p></div>
+          <i class="fa-brands fa-facebook-f"></i>
+          <div><h4>Facebook</h4><p><a href="https://facebook.com/priyantha.kumara.180" target="_blank">priyantha.kumara.180</a></p></div>
         </div>
       </div>
       <form>
@@ -509,9 +211,10 @@
         <label for="category">What do you need?</label>
         <select id="category">
           <option>Iron &amp; Steel</option>
-          <option>Metal Sheets</option>
-          <option>Welding Machines &amp; Consumables</option>
-          <option>Hardware &amp; Tools</option>
+          <option>Pipes &amp; Tubes</option>
+          <option>Sheets &amp; Roofing</option>
+          <option>Hardware</option>
+          <option>Welding &amp; Power Tools</option>
           <option>Not sure — please advise</option>
         </select>
         <label for="msg">Details / list</label>
@@ -526,16 +229,20 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a href="#top" class="logo" style="margin-bottom:14px;"><i class="fa-solid fa-industry"></i> IRONHUB</a>
-        <p style="color:var(--paper-dim);font-size:14px;max-width:280px;">Your one-stop shop for iron, metal sheets, welding supplies and hardware goods in Sri Lanka.</p>
+        <a href="index.html" class="brand" style="margin-bottom:14px;">
+          <div class="brand-mark">NMS</div>
+          <div class="brand-word"><span class="en">New Money Stores</span></div>
+        </a>
+        <p style="color:var(--paper-dim);font-size:14px;max-width:280px;">Iron, pipes, sheets, hardware, welding &amp; cutting services — all under one roof in Sri Lanka.</p>
       </div>
       <div>
         <h5>Departments</h5>
         <ul>
-          <li><a href="#iron">Iron &amp; Steel</a></li>
-          <li><a href="#sheets">Metal Sheets</a></li>
-          <li><a href="#welding">Welding</a></li>
-          <li><a href="#hardware">Hardware &amp; Tools</a></li>
+          <li><a href="iron.html">Iron &amp; Steel</a></li>
+          <li><a href="pipes.html">Pipes &amp; Tubes</a></li>
+          <li><a href="sheets.html">Sheets &amp; Roofing</a></li>
+          <li><a href="hardware.html">Hardware</a></li>
+          <li><a href="welding.html">Welding &amp; Tools</a></li>
         </ul>
       </div>
       <div>
@@ -543,61 +250,27 @@
         <ul>
           <li><a href="#about">Why Us</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Get a Quote</a></li>
+          <li><a href="https://wa.me/94777737602" target="_blank">Call for Price</a></li>
         </ul>
       </div>
       <div>
         <h5>Follow</h5>
         <div class="social">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://facebook.com/priyantha.kumara.180" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/94777737602" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:nmspriya@gmail.com"><i class="fa-solid fa-envelope"></i></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 IRONHUB. All rights reserved.</span>
-      <span>Built for contractors, workshops &amp; builders across Sri Lanka.</span>
+      <span>&copy; 2026 NMS — New Money Stores. All rights reserved.</span>
+      <span>Iron &middot; Pipes &middot; Sheets &middot; Hardware &middot; Welding — Sri Lanka.</span>
     </div>
   </div>
 </footer>
 
-<a href="#contact" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://wa.me/94777737602" target="_blank" class="whatsapp-float"><i class="fa-brands fa-whatsapp"></i></a>
 
-<script>
-  const toggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('nav');
-  toggle.addEventListener('click', () => nav.classList.toggle('open'));
-  document.querySelectorAll('#nav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
-
-  // Scroll progress bar
-  const progressBar = document.getElementById('progressBar');
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = pct + '%';
-  });
-
-  // Header shadow on scroll
-  const header = document.querySelector('header');
-  window.addEventListener('scroll', () => {
-    header.style.boxShadow = window.scrollY > 20 ? '0 4px 20px rgba(0,0,0,0.35)' : 'none';
-  });
-
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
