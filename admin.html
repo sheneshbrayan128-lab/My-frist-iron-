@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — NMS New Money Stores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .admin-wrap{max-width:900px;margin:0 auto;padding:100px 24px 80px;}
+  .admin-card{background:var(--charcoal-2);border:1px solid var(--line);border-radius:4px;padding:30px;margin-bottom:24px;}
+  .admin-card h2{font-size:22px;margin-bottom:18px;}
+  .admin-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .admin-row.full{grid-template-columns:1fr;}
+  .admin-list-item{
+    display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);
+  }
+  .admin-list-item img{width:50px;height:50px;object-fit:cover;border-radius:3px;background:var(--steel);flex-shrink:0;}
+  .admin-list-item .info{flex:1;min-width:0;}
+  .admin-list-item .info h4{font-size:14px;margin-bottom:2px;}
+  .admin-list-item .info p{font-size:12px;color:var(--paper-dim);}
+  .admin-list-item .actions{display:flex;gap:8px;flex-shrink:0;}
+  .admin-list-item .actions button{
+    background:none;border:1px solid var(--line);color:var(--paper-dim);width:32px;height:32px;border-radius:3px;cursor:pointer;
+  }
+  .admin-list-item .actions button:hover{border-color:var(--amber);color:var(--amber);}
+  .admin-list-item .actions button.danger:hover{border-color:var(--rust);color:var(--rust);}
+  #loginScreen, #dashboard{display:none;}
+  .status-msg{font-size:13px;padding:10px 14px;border-radius:3px;margin-bottom:16px;display:none;}
+  .status-msg.error{background:rgba(211,84,32,0.12);border:1px solid rgba(211,84,32,0.4);color:#e8874f;display:block;}
+  .status-msg.success{background:rgba(242,169,0,0.1);border:1px solid rgba(242,169,0,0.35);color:var(--amber);display:block;}
+  .setup-note{background:rgba(242,169,0,0.08);border:1px solid rgba(242,169,0,0.3);border-radius:4px;padding:16px 18px;font-size:13.5px;color:var(--paper-dim);margin-bottom:24px;line-height:1.7;}
+  .setup-note strong{color:var(--paper);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">NMS</div>
+      <div class="brand-word">
+        <span class="en">New Money Stores</span>
+        <span class="si">Admin Panel</span>
+      </div>
+    </a>
+    <a href="index.html" class="cta-outline"><i class="fa-solid fa-arrow-left"></i> Back to Site</a>
+  </div>
+</header>
+
+<div class="admin-wrap">
+
+  <div id="configWarning" class="setup-note" style="display:none;">
+    <strong>Firebase isn't connected yet.</strong> This admin panel needs a Firebase project to save products.
+    Open <code>firebase-config.js</code> in your files and paste in your project's config — see
+    <code>FIREBASE-SETUP.md</code> for the full walkthrough. Until then, your site shows the built-in default catalog.
+  </div>
+
+  <div id="loginScreen">
+    <div class="admin-card" style="max-width:400px;margin:60px auto;">
+      <h2><i class="fa-solid fa-lock"></i> Admin Login</h2>
+      <div id="loginStatus" class="status-msg"></div>
+      <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Email</label>
+      <input id="loginEmail" type="email" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;margin-bottom:16px;border-radius:2px;">
+      <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Password</label>
+      <input id="loginPassword" type="password" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;margin-bottom:20px;border-radius:2px;">
+      <button id="loginBtn" class="cta-btn" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Log In</button>
+    </div>
+  </div>
+
+  <div id="dashboard">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <h1 style="font-size:26px;">Manage Products</h1>
+      <button id="logoutBtn" class="cta-outline"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+    </div>
+
+    <div class="admin-card">
+      <h2 id="formTitle">Add a Product</h2>
+      <div id="formStatus" class="status-msg"></div>
+      <input type="hidden" id="editId">
+      <div class="admin-row" style="margin-bottom:16px;">
+        <div>
+          <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Department</label>
+          <select id="fDept" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
+            <option value="iron">Iron & Steel</option>
+            <option value="pipes">Pipes & Tubes</option>
+            <option value="sheets">Sheets & Roofing</option>
+            <option value="hardware">Hardware</option>
+            <option value="welding">Welding & Tools</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Subcategory (optional)</label>
+          <input id="fSubcat" type="text" placeholder="e.g. Round Bars" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
+        </div>
+      </div>
+      <div class="admin-row" style="margin-bottom:16px;">
+        <div>
+          <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Product Name</label>
+          <input id="fName" type="text" placeholder="e.g. Round Bar 12mm" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
+        </div>
+        <div>
+          <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Spec / Size Detail</label>
+          <input id="fSpec" type="text" placeholder="e.g. 1/2 inch" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
+        </div>
+      </div>
+      <div class="admin-row full" style="margin-bottom:20px;">
+        <div>
+          <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Image URL</label>
+          <input id="fImage" type="text" placeholder="Paste an image link (e.g. from imgur, Google Photos share link, or Facebook)" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
+          <p style="font-size:12px;color:var(--paper-dim);margin-top:6px;">Upload your photo to any free image host (imgur.com is easiest — no account needed) then paste the direct image link here.</p>
+        </div>
+      </div>
+      <button id="saveBtn" class="cta-btn"><i class="fa-solid fa-floppy-disk"></i> Save Product</button>
+      <button id="cancelEditBtn" class="cta-outline" style="display:none;margin-left:10px;">Cancel Edit</button>
+    </div>
+
+    <div class="admin-card">
+      <h2>Existing Products</h2>
+      <div style="margin-bottom:16px;">
+        <select id="filterDept" style="background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:10px 14px;border-radius:2px;">
+          <option value="iron">Iron & Steel</option>
+          <option value="pipes">Pipes & Tubes</option>
+          <option value="sheets">Sheets & Roofing</option>
+          <option value="hardware">Hardware</option>
+          <option value="welding">Welding & Tools</option>
+        </select>
+      </div>
+      <div id="productList"><p style="color:var(--paper-dim);">Loading…</p></div>
+    </div>
+  </div>
+
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import {
+    getFirestore, collection, query, where, getDocs, addDoc, updateDoc, deleteDoc, doc
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { firebaseConfig } from "./firebase-config.js";
+
+  const configOk = firebaseConfig && firebaseConfig.apiKey && !String(firebaseConfig.apiKey).startsWith("YOUR_");
+  document.getElementById("configWarning").style.display = configOk ? "none" : "block";
+
+  if (!configOk) {
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("dashboard").style.display = "none";
+  } else {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const loginScreen = document.getElementById("loginScreen");
+    const dashboard = document.getElementById("dashboard");
+    const loginStatus = document.getElementById("loginStatus");
+    const formStatus = document.getElementById("formStatus");
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loginScreen.style.display = "none";
+        dashboard.style.display = "block";
+        loadProducts();
+      } else {
+        loginScreen.style.display = "block";
+        dashboard.style.display = "none";
+      }
+    });
+
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      const email = document.getElementById("loginEmail").value.trim();
+      const pass = document.getElementById("loginPassword").value;
+      loginStatus.style.display = "none";
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+      } catch (err) {
+        loginStatus.className = "status-msg error";
+        loginStatus.textContent = "Login failed: " + err.message;
+      }
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", () => signOut(auth));
+
+    const fDept = document.getElementById("fDept");
+    const fSubcat = document.getElementById("fSubcat");
+    const fName = document.getElementById("fName");
+    const fSpec = document.getElementById("fSpec");
+    const fImage = document.getElementById("fImage");
+    const editId = document.getElementById("editId");
+    const formTitle = document.getElementById("formTitle");
+    const cancelEditBtn = document.getElementById("cancelEditBtn");
+    const filterDept = document.getElementById("filterDept");
+
+    function resetForm() {
+      editId.value = "";
+      fSubcat.value = "";
+      fName.value = "";
+      fSpec.value = "";
+      fImage.value = "";
+      formTitle.textContent = "Add a Product";
+      cancelEditBtn.style.display = "none";
+    }
+
+    cancelEditBtn.addEventListener("click", resetForm);
+
+    document.getElementById("saveBtn").addEventListener("click", async () => {
+      const name = fName.value.trim();
+      if (!name) {
+        formStatus.className = "status-msg error";
+        formStatus.textContent = "Product name is required.";
+        return;
+      }
+      const data = {
+        department: fDept.value,
+        subcategory: fSubcat.value.trim(),
+        name: name,
+        spec: fSpec.value.trim(),
+        image: fImage.value.trim(),
+        order: Date.now()
+      };
+      try {
+        if (editId.value) {
+          await updateDoc(doc(db, "products", editId.value), data);
+          formStatus.textContent = "Product updated.";
+        } else {
+          await addDoc(collection(db, "products"), data);
+          formStatus.textContent = "Product added.";
+        }
+        formStatus.className = "status-msg success";
+        resetForm();
+        loadProducts();
+      } catch (err) {
+        formStatus.className = "status-msg error";
+        formStatus.textContent = "Error: " + err.message;
+      }
+    });
+
+    filterDept.addEventListener("change", loadProducts);
+
+    async function loadProducts() {
+      const list = document.getElementById("productList");
+      list.innerHTML = "<p style='color:var(--paper-dim);'>Loading…</p>";
+      const q = query(collection(db, "products"), where("department", "==", filterDept.value));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        list.innerHTML = "<p style='color:var(--paper-dim);'>No products saved for this department yet — the site is showing its default catalog instead.</p>";
+        return;
+      }
+      const items = [];
+      snap.forEach((d) => items.push({ id: d.id, ...d.data() }));
+      items.sort((a, b) => (a.order || 0) - (b.order || 0));
+      list.innerHTML = "";
+      items.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "admin-list-item";
+        row.innerHTML = `
+          <img src="${item.image || ''}" onerror="this.style.visibility='hidden'">
+          <div class="info">
+            <h4>${item.name}</h4>
+            <p>${item.subcategory ? item.subcategory + " · " : ""}${item.spec || ""}</p>
+          </div>
+          <div class="actions">
+            <button class="edit-btn" title="Edit"><i class="fa-solid fa-pen"></i></button>
+            <button class="delete-btn danger" title="Delete"><i class="fa-solid fa-trash"></i></button>
+          </div>`;
+        row.querySelector(".edit-btn").addEventListener("click", () => {
+          editId.value = item.id;
+          fDept.value = item.department;
+          fSubcat.value = item.subcategory || "";
+          fName.value = item.name || "";
+          fSpec.value = item.spec || "";
+          fImage.value = item.image || "";
+          formTitle.textContent = "Edit Product";
+          cancelEditBtn.style.display = "inline-flex";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        row.querySelector(".delete-btn").addEventListener("click", async () => {
+          if (confirm(`Delete "${item.name}"?`)) {
+            await deleteDoc(doc(db, "products", item.id));
+            loadProducts();
+          }
+        });
+        list.appendChild(row);
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
