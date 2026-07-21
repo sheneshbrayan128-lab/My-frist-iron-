@@ -15,17 +15,33 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-function productCardHTML(p, deptLabel) {
+function productCardHTML(p, deptLabel, idx) {
   const name = escapeHtml(p.name);
-  const spec = escapeHtml(p.spec || "");
   const img = p.image || "";
+  const variants = Array.isArray(p.variants) && p.variants.length ? p.variants : ["Standard"];
+  const hasChoice = variants.length > 1;
+  const cardId = `p${idx}`;
+
+  let sizeControl = "";
+  if (hasChoice) {
+    const options = variants.map((v, i) => `<option value="${escapeHtml(v)}"${i === 0 ? " selected" : ""}>${escapeHtml(v)}</option>`).join("");
+    sizeControl = `
+          <label class="size-label" for="${cardId}-size">Size</label>
+          <select id="${cardId}-size" class="size-select" data-card="${cardId}">${options}</select>`;
+  } else {
+    sizeControl = `<div class="spec">${escapeHtml(variants[0])}</div>`;
+  }
+
+  const initialVariant = variants[0];
+  const waHref = waLink(`Hi, I would like a price for: ${p.name} - ${initialVariant} (${deptLabel})`);
+
   return `
-      <div class="product-card reveal">
+      <div class="product-card reveal" id="${cardId}" data-name="${escapeHtml(p.name)}" data-dept="${escapeHtml(deptLabel)}">
         <div class="product-thumb"><img src="${img}" alt="${name}" onerror="this.style.display='none'"></div>
         <div class="product-body">
           <h4>${name}</h4>
-          <div class="spec">${spec}</div>
-          <a href="${waLink('Hi, I would like a price for: ' + p.name + ' (' + deptLabel + ')')}" target="_blank" class="call-price">Call for Price <i class="fa-brands fa-whatsapp"></i></a>
+          ${sizeControl}
+          <a href="${waHref}" target="_blank" class="call-price" id="${cardId}-link">Call for Price <i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>`;
 }
@@ -49,13 +65,31 @@ function render(items, deptLabel) {
   }
   const groups = groupBySubcategory(items);
   let html = "";
+  let idx = 0;
   groups.forEach(([subTitle, list]) => {
     if (subTitle) html += `<div class="subcategory-head reveal"><h3>${escapeHtml(subTitle)}</h3></div>`;
     html += '<div class="product-grid">';
-    list.forEach((p) => (html += productCardHTML(p, deptLabel)));
+    list.forEach((p) => {
+      html += productCardHTML(p, deptLabel, idx);
+      idx++;
+    });
     html += "</div>";
   });
   container.innerHTML = html;
+
+  // Wire up size selectors so the WhatsApp link updates with the chosen size
+  container.querySelectorAll(".size-select").forEach((select) => {
+    select.addEventListener("change", () => {
+      const cardId = select.dataset.card;
+      const card = document.getElementById(cardId);
+      const link = document.getElementById(`${cardId}-link`);
+      if (!card || !link) return;
+      const name = card.dataset.name;
+      const dept = card.dataset.dept;
+      const size = select.value;
+      link.href = waLink(`Hi, I would like a price for: ${name} - ${size} (${dept})`);
+    });
+  });
 
   const io = new IntersectionObserver(
     (entries) => {
@@ -98,8 +132,6 @@ async function main() {
     }
   }
 
-  // Fallback: built-in catalog (used until Firebase is configured, or if a
-  // department has no products saved yet in the database)
   render(FALLBACK[dept] || [], deptLabel);
 }
 

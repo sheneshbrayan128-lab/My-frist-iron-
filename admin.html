@@ -33,9 +33,14 @@
   .status-msg.success{background:rgba(242,169,0,0.1);border:1px solid rgba(242,169,0,0.35);color:var(--amber);display:block;}
   .setup-note{background:rgba(242,169,0,0.08);border:1px solid rgba(242,169,0,0.3);border-radius:4px;padding:16px 18px;font-size:13.5px;color:var(--paper-dim);margin-bottom:24px;line-height:1.7;}
   .setup-note strong{color:var(--paper);}
+  noscript .setup-note{display:block;}
 </style>
 </head>
 <body>
+
+<noscript>
+  <div class="admin-wrap"><div class="setup-note"><strong>JavaScript is disabled.</strong> This admin panel needs JavaScript turned on in your browser to work.</div></div>
+</noscript>
 
 <header>
   <div class="navbar">
@@ -52,10 +57,13 @@
 
 <div class="admin-wrap">
 
-  <div id="configWarning" class="setup-note" style="display:none;">
-    <strong>Firebase isn't connected yet.</strong> This admin panel needs a Firebase project to save products.
-    Open <code>firebase-config.js</code> in your files and paste in your project's config — see
-    <code>FIREBASE-SETUP.md</code> for the full walkthrough. Until then, your site shows the built-in default catalog.
+  <div id="jsErrorBox" class="setup-note" style="display:none;"></div>
+
+  <div id="configWarning" class="setup-note">
+    <strong>Checking Firebase connection&hellip;</strong> If this message doesn't change in a few seconds, either
+    <code>firebase-config.js</code> still has placeholder values, or this page needs to be opened from your live
+    website link (not by double-clicking the file) with an internet connection. See <code>FIREBASE-SETUP.md</code>
+    for the full walkthrough.
   </div>
 
   <div id="loginScreen">
@@ -99,13 +107,14 @@
       <div class="admin-row" style="margin-bottom:16px;">
         <div>
           <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Product Name</label>
-          <input id="fName" type="text" placeholder="e.g. Round Bar 12mm" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
+          <input id="fName" type="text" placeholder="e.g. Round Bar" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
         </div>
         <div>
-          <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Spec / Size Detail</label>
-          <input id="fSpec" type="text" placeholder="e.g. 1/2 inch" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
+          <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Sizes (comma separated)</label>
+          <input id="fSpec" type="text" placeholder="e.g. 10mm, 12mm, 16mm, 20mm" style="width:100%;background:var(--charcoal);border:1px solid var(--line);color:var(--paper);padding:12px 14px;border-radius:2px;">
         </div>
       </div>
+      <p style="font-size:12px;color:var(--paper-dim);margin:-8px 0 16px;">One photo covers every size listed above — visitors pick the size from a dropdown on the product card, like choosing a size or color on a shopping site. Leave this as a single entry (e.g. just "Standard") if the product has no size variants.</p>
       <div class="admin-row full" style="margin-bottom:20px;">
         <div>
           <label style="font-size:12px;text-transform:uppercase;color:var(--paper-dim);display:block;margin-bottom:6px;">Image URL</label>
@@ -134,6 +143,30 @@
 
 </div>
 
+<script>
+  window.__adminModuleLoaded = false;
+  window.__adminModuleError = null;
+  window.addEventListener("error", function (e) {
+    if (window.__adminModuleLoaded) return;
+    window.__adminModuleError = e.message || "Unknown script error";
+  });
+  setTimeout(function () {
+    if (window.__adminModuleLoaded) return;
+    var box = document.getElementById("jsErrorBox");
+    var warn = document.getElementById("configWarning");
+    if (warn) warn.style.display = "none";
+    if (box) {
+      box.style.display = "block";
+      box.innerHTML =
+        "<strong>This page couldn't load its scripts.</strong> Most likely cause: it was opened directly as a file " +
+        "instead of through your live website link, or there's no internet connection right now. " +
+        "Open this page using your GitHub Pages URL (e.g. https://your-username.github.io/repo-name/admin.html) " +
+        "in a browser with internet access." +
+        (window.__adminModuleError ? "<br><br><span style='font-family:monospace;font-size:11px;'>Detail: " + window.__adminModuleError + "</span>" : "");
+    }
+  }, 2500);
+</script>
+
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import {
@@ -144,13 +177,20 @@
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
   import { firebaseConfig } from "./firebase-config.js";
 
+  window.__adminModuleLoaded = true;
+
   const configOk = firebaseConfig && firebaseConfig.apiKey && !String(firebaseConfig.apiKey).startsWith("YOUR_");
-  document.getElementById("configWarning").style.display = configOk ? "none" : "block";
+  const configWarning = document.getElementById("configWarning");
 
   if (!configOk) {
+    configWarning.innerHTML =
+      "<strong>Firebase isn't connected yet.</strong> This admin panel needs a Firebase project to save products. " +
+      "Open <code>firebase-config.js</code> in your files and paste in your project's config — see " +
+      "<code>FIREBASE-SETUP.md</code> for the full walkthrough. Until then, your site shows the built-in default catalog.";
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("dashboard").style.display = "none";
   } else {
+    configWarning.style.display = "none";
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
@@ -218,7 +258,9 @@
         department: fDept.value,
         subcategory: fSubcat.value.trim(),
         name: name,
-        spec: fSpec.value.trim(),
+        variants: fSpec.value.trim()
+          ? fSpec.value.split(",").map((s) => s.trim()).filter(Boolean)
+          : ["Standard"],
         image: fImage.value.trim(),
         order: Date.now()
       };
@@ -261,7 +303,7 @@
           <img src="${item.image || ''}" onerror="this.style.visibility='hidden'">
           <div class="info">
             <h4>${item.name}</h4>
-            <p>${item.subcategory ? item.subcategory + " · " : ""}${item.spec || ""}</p>
+            <p>${item.subcategory ? item.subcategory + " · " : ""}${(item.variants || []).join(", ")}</p>
           </div>
           <div class="actions">
             <button class="edit-btn" title="Edit"><i class="fa-solid fa-pen"></i></button>
@@ -272,7 +314,7 @@
           fDept.value = item.department;
           fSubcat.value = item.subcategory || "";
           fName.value = item.name || "";
-          fSpec.value = item.spec || "";
+          fSpec.value = (item.variants || []).join(", ");
           fImage.value = item.image || "";
           formTitle.textContent = "Edit Product";
           cancelEditBtn.style.display = "inline-flex";
