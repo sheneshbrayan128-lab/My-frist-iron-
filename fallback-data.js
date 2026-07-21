@@ -83,6 +83,30 @@ export const FALLBACK = {
         "Standard sizes"
       ],
       "order": 6
+    },
+    {
+      "name": "Chicken Wire (කුකුල් දැල්)",
+      "subcategory": "Wire & Mesh",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "variants": [
+        "1/2\" x 1/2\"",
+        "3/4\" x 3/4\"",
+        "1\" x 1\"",
+        "2\" x 2\""
+      ],
+      "order": 7
+    },
+    {
+      "name": "Barbed Wire (කටු කම්බි)",
+      "subcategory": "Wire & Mesh",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "variants": [
+        "Gauge 10",
+        "Gauge 15",
+        "Gauge 20",
+        "Gauge 25"
+      ],
+      "order": 8
     }
   ],
   "pipes": [
@@ -235,6 +259,73 @@ export const FALLBACK = {
         "Assorted sizes"
       ],
       "order": 4
+    },
+    {
+      "name": "Bushing",
+      "subcategory": "Bushings & Site Tools",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/00/Socket_wrench_and_sockets.JPG",
+      "variants": [
+        "5/8\" x 1 1/2\"",
+        "5/8\" x 2\"",
+        "3/4\" x 2\"",
+        "7/8\" x 2\"",
+        "1 1/2\" x 1\"",
+        "2\" x 1\"",
+        "2 1/2\" x 1\"",
+        "3\" x 1\"",
+        "4\" x 1\"",
+        "1 1/4\" x 1\"",
+        "1 1/4\" x 1 1/2\"",
+        "1 1/4\" x 2\"",
+        "1 1/2\" x 1 1/2\"",
+        "1 1/2\" x 2\"",
+        "1 1/2\" x 2 1/2\"",
+        "1 1/2\" x 3\"",
+        "2\" x 3\"",
+        "2\" x 4\""
+      ],
+      "order": 5
+    },
+    {
+      "name": "Mason Trowel",
+      "subcategory": "Bushings & Site Tools",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/00/Socket_wrench_and_sockets.JPG",
+      "variants": [
+        "5\"",
+        "6\"",
+        "7\"",
+        "8\"",
+        "9\"",
+        "10\"",
+        "12\""
+      ],
+      "order": 6
+    },
+    {
+      "name": "Scraper",
+      "subcategory": "Bushings & Site Tools",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/00/Socket_wrench_and_sockets.JPG",
+      "variants": [
+        "2\"",
+        "2 1/2\"",
+        "3\"",
+        "3 1/2\"",
+        "4\"",
+        "5\""
+      ],
+      "order": 7
+    },
+    {
+      "name": "Anchor Bolt",
+      "subcategory": "Bushings & Site Tools",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/00/Socket_wrench_and_sockets.JPG",
+      "variants": [
+        "6mm",
+        "8mm",
+        "10mm",
+        "12mm"
+      ],
+      "order": 8
     }
   ],
   "welding": [
