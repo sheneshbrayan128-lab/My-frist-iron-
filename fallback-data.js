@@ -14,7 +14,7 @@ export const FALLBACK = {
     {
       "name": "Rebar Mesh",
       "subcategory": "Rebar Mesh (දැල්)",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/rebar-mesh.jpg",
       "variants": [
         "2¼\" x 2¼\"",
         "2½\" x 2½\""
@@ -24,7 +24,7 @@ export const FALLBACK = {
     {
       "name": "Round Bar",
       "subcategory": "Round Bars",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/round-bar.jpg",
       "variants": [
         "10mm (3/8\")",
         "12mm (1/2\")",
@@ -42,7 +42,7 @@ export const FALLBACK = {
     {
       "name": "Square Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/square-bar.jpg",
       "variants": [
         "Standard sizes"
       ],
@@ -51,7 +51,7 @@ export const FALLBACK = {
     {
       "name": "Flat Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/flat-bar.jpg",
       "variants": [
         "Standard sizes"
       ],
@@ -60,7 +60,7 @@ export const FALLBACK = {
     {
       "name": "Angle Bar (L)",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/angle-bar.jpg",
       "variants": [
         "Standard sizes"
       ],
@@ -69,7 +69,7 @@ export const FALLBACK = {
     {
       "name": "U Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/u-bar.jpg",
       "variants": [
         "Standard sizes"
       ],
@@ -78,7 +78,7 @@ export const FALLBACK = {
     {
       "name": "H Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/h-bar.jpg",
       "variants": [
         "Standard sizes"
       ],
@@ -87,7 +87,7 @@ export const FALLBACK = {
     {
       "name": "Chicken Wire (කුකුල් දැල්)",
       "subcategory": "Wire & Mesh",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/chicken-wire.jpg",
       "variants": [
         "1/2\" x 1/2\"",
         "3/4\" x 3/4\"",
@@ -97,16 +97,25 @@ export const FALLBACK = {
       "order": 7
     },
     {
+      "name": "Airport Net",
+      "subcategory": "Wire & Mesh",
+      "image": "images/iron/airport-net.jpg",
+      "variants": [
+        "Standard"
+      ],
+      "order": 8
+    },
+    {
       "name": "Barbed Wire (කටු කම්බි)",
       "subcategory": "Wire & Mesh",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Rebar_01.JPG",
+      "image": "images/iron/barbed-wire.jpg",
       "variants": [
         "Gauge 10",
         "Gauge 15",
         "Gauge 20",
         "Gauge 25"
       ],
-      "order": 8
+      "order": 9
     }
   ],
   "pipes": [
@@ -162,6 +171,51 @@ export const FALLBACK = {
         "1 1/4\""
       ],
       "order": 3
+    },
+    {
+      "name": "Irrigation Rope",
+      "subcategory": "Irrigation",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/09/Steel_pipe.jpg",
+      "variants": [
+        "1'",
+        "1.5'",
+        "2'",
+        "2.5'",
+        "3'",
+        "4'"
+      ],
+      "order": 4
+    },
+    {
+      "name": "Rope Board",
+      "subcategory": "Irrigation",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/09/Steel_pipe.jpg",
+      "variants": [
+        "1'",
+        "1.5'",
+        "2'",
+        "2.5'",
+        "3'"
+      ],
+      "order": 5
+    },
+    {
+      "name": "Irrigation Sprinkler (Dawon / P4 / P7)",
+      "subcategory": "Irrigation",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/09/Steel_pipe.jpg",
+      "variants": [
+        "1/2\"",
+        "3/4\"",
+        "1\"",
+        "1 1/4\"",
+        "1 1/2\"",
+        "2\"",
+        "2 1/2\"",
+        "3\"",
+        "4\"",
+        "6\""
+      ],
+      "order": 6
     }
   ],
   "sheets": [
@@ -326,6 +380,57 @@ export const FALLBACK = {
         "12mm"
       ],
       "order": 8
+    },
+    {
+      "name": "Conduit Pipe",
+      "subcategory": "Electrical Fittings",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Bolts_and_Nuts.jpg",
+      "variants": [
+        "2",
+        "2 1/2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "order": 9
+    },
+    {
+      "name": "Cable",
+      "subcategory": "Electrical Fittings",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Bolts_and_Nuts.jpg",
+      "variants": [
+        "2",
+        "2 1/2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "order": 10
+    },
+    {
+      "name": "Galvanized Strip",
+      "subcategory": "Electrical Fittings",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Bolts_and_Nuts.jpg",
+      "variants": [
+        "2",
+        "2 1/2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "order": 11
+    },
+    {
+      "name": "Additional Items (ask in-store — catalog ref. 204-211)",
+      "subcategory": "Other Items",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Bolts_and_Nuts.jpg",
+      "variants": [
+        "Standard"
+      ],
+      "order": 12
     }
   ],
   "welding": [
@@ -406,6 +511,15 @@ export const FALLBACK = {
         "Electric"
       ],
       "order": 7
+    },
+    {
+      "name": "Argon Gas",
+      "subcategory": "Power Tools",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Grinder_diamond_blade.jpg",
+      "variants": [
+        "Standard"
+      ],
+      "order": 8
     }
   ]
 };
