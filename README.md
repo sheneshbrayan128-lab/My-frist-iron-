@@ -19,7 +19,7 @@ All files must be uploaded together, in the same folder.
 ## Put it on GitHub
 
 1. Create a repo at [github.com/new](https://github.com/new)
-2. Upload **all files from this folder at once**
+2. Upload **all files from this folder at once** — **drag the whole folder (including the `images` subfolder) straight into the GitHub upload page.** Using the "choose your files" button instead can silently skip subfolders, which is why photos sometimes go missing after publishing.
 3. Commit to `main`
 4. **Settings → Pages** → Source: `main` branch, root → Save
 5. Live at `https://your-username.github.io/repo-name/` in about a minute

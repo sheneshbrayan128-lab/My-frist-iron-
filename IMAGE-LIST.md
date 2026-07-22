@@ -5,15 +5,7 @@
 ---
 
 ## 1. Iron & Steel (9 photos)
-1. Rebar Mesh
-2. Round Bar
-3. Square Bar
-4. Flat Bar
-5. Angle Bar (L)
-6. U Bar
-7. H Bar
-8. Chicken Wire
-9. Barbed Wire
+Now sourced from stock photography instead of store photos. Chicken Wire and Barbed Wire have a decent stock match; the rest (Rebar Mesh, Round Bar, Square Bar, Flat Bar, Angle Bar, U Bar, H Bar, Airport Net) show a "Photo coming soon" placeholder because no accurate stock photo exists for these specific shapes — send real photos for these when you can, or rename them in `admin.html`.
 
 ## 2. Pipes & Tubes (7 photos)
 10. GI Pipe
@@ -26,7 +18,7 @@
 
 ## 3. Sheets & Roofing (2 photos)
 17. GI Sheet
-18. Box Sheet
+18. Amano Roofing Sheets (replaced Box Sheet)
 
 ## 4. Hardware (13 photos)
 19. Bolt

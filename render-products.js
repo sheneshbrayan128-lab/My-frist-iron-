@@ -37,7 +37,11 @@ function productCardHTML(p, deptLabel, idx) {
 
   return `
       <div class="product-card reveal" id="${cardId}" data-name="${escapeHtml(p.name)}" data-dept="${escapeHtml(deptLabel)}">
-        <div class="product-thumb"><img src="${img}" alt="${name}" onerror="this.style.display='none'"></div>
+        <div class="product-thumb${img ? "" : " no-photo"}">${
+          img
+            ? `<img src="${img}" alt="${name}" onerror="this.parentElement.classList.add('no-photo');this.remove();this.parentElement.innerHTML='<i class=\\'fa-solid fa-image\\'></i><span>Photo coming soon</span>';">`
+            : `<i class="fa-solid fa-image"></i><span>Photo coming soon</span>`
+        }</div>
         <div class="product-body">
           <h4>${name}</h4>
           ${sizeControl}

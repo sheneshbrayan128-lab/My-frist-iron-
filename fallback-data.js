@@ -14,7 +14,7 @@ export const FALLBACK = {
     {
       "name": "Rebar Mesh",
       "subcategory": "Rebar Mesh (දැල්)",
-      "image": "images/iron/rebar-mesh.jpg",
+      "image": "",
       "variants": [
         "2¼\" x 2¼\"",
         "2½\" x 2½\""
@@ -24,7 +24,7 @@ export const FALLBACK = {
     {
       "name": "Round Bar",
       "subcategory": "Round Bars",
-      "image": "images/iron/round-bar.jpg",
+      "image": "",
       "variants": [
         "10mm (3/8\")",
         "12mm (1/2\")",
@@ -42,7 +42,7 @@ export const FALLBACK = {
     {
       "name": "Square Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "images/iron/square-bar.jpg",
+      "image": "",
       "variants": [
         "Standard sizes"
       ],
@@ -51,7 +51,7 @@ export const FALLBACK = {
     {
       "name": "Flat Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "images/iron/flat-bar.jpg",
+      "image": "",
       "variants": [
         "Standard sizes"
       ],
@@ -60,7 +60,7 @@ export const FALLBACK = {
     {
       "name": "Angle Bar (L)",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "images/iron/angle-bar.jpg",
+      "image": "",
       "variants": [
         "Standard sizes"
       ],
@@ -69,7 +69,7 @@ export const FALLBACK = {
     {
       "name": "U Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "images/iron/u-bar.jpg",
+      "image": "",
       "variants": [
         "Standard sizes"
       ],
@@ -78,7 +78,7 @@ export const FALLBACK = {
     {
       "name": "H Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "images/iron/h-bar.jpg",
+      "image": "",
       "variants": [
         "Standard sizes"
       ],
@@ -87,7 +87,7 @@ export const FALLBACK = {
     {
       "name": "Chicken Wire (කුකුල් දැල්)",
       "subcategory": "Wire & Mesh",
-      "image": "images/iron/chicken-wire.jpg",
+      "image": "https://images.pexels.com/photos/14686331/pexels-photo-14686331.jpeg?auto=compress&cs=tinysrgb&w=800",
       "variants": [
         "1/2\" x 1/2\"",
         "3/4\" x 3/4\"",
@@ -99,7 +99,7 @@ export const FALLBACK = {
     {
       "name": "Airport Net",
       "subcategory": "Wire & Mesh",
-      "image": "images/iron/airport-net.jpg",
+      "image": "",
       "variants": [
         "Standard"
       ],
@@ -108,7 +108,7 @@ export const FALLBACK = {
     {
       "name": "Barbed Wire (කටු කම්බි)",
       "subcategory": "Wire & Mesh",
-      "image": "images/iron/barbed-wire.jpg",
+      "image": "https://images.pexels.com/photos/593101/pexels-photo-593101.jpeg?auto=compress&cs=tinysrgb&w=800",
       "variants": [
         "Gauge 10",
         "Gauge 15",
@@ -237,17 +237,14 @@ export const FALLBACK = {
       "order": 0
     },
     {
-      "name": "Box Sheet",
-      "subcategory": "Box Sheets",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/5/50/Sheet_metal.JPG",
+      "name": "Amano Roofing Sheets",
+      "subcategory": "Amano Roofing Sheets",
+      "image": "",
       "variants": [
-        "3/4\" x 3/4\" (1.1-3mm)",
-        "1\" x 1\" (1.1-3mm)",
-        "1 1/2\" x 1 1/2\" (1.2-2mm)",
-        "2\" x 2\" (1.2-2mm)",
-        "2\" x 1\" (1.2-2mm)",
-        "3\" x 1 1/2\" (1.2-1.6mm)",
-        "4\" x 2\" (1.2-1.6mm)"
+        "0.20mm",
+        "0.30mm",
+        "0.40mm",
+        "0.47mm"
       ],
       "order": 1
     }
@@ -412,7 +409,7 @@ export const FALLBACK = {
     {
       "name": "Galvanized Strip",
       "subcategory": "Electrical Fittings",
-      "image": "images/iron/flat-bar.jpg",
+      "image": "",
       "variants": [
         "2",
         "2 1/2",
