@@ -14,7 +14,7 @@ export const FALLBACK = {
     {
       "name": "Rebar Mesh",
       "subcategory": "Rebar Mesh (දැල්)",
-      "image": "",
+      "image": "https://i.imgur.com/fVRu4vs.jpeg",
       "variants": [
         "2¼\" x 2¼\"",
         "2½\" x 2½\""
@@ -24,7 +24,7 @@ export const FALLBACK = {
     {
       "name": "Round Bar",
       "subcategory": "Round Bars",
-      "image": "",
+      "image": "https://i.imgur.com/cG6A2Y5.jpeg",
       "variants": [
         "10mm (3/8\")",
         "12mm (1/2\")",
@@ -42,7 +42,7 @@ export const FALLBACK = {
     {
       "name": "Square Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "",
+      "image": "https://i.imgur.com/djMSR9O.jpeg",
       "variants": [
         "Standard sizes"
       ],
@@ -51,7 +51,7 @@ export const FALLBACK = {
     {
       "name": "Flat Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "",
+      "image": "https://i.imgur.com/yLNUFjm.jpeg",
       "variants": [
         "Standard sizes"
       ],
@@ -60,7 +60,7 @@ export const FALLBACK = {
     {
       "name": "Angle Bar (L)",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "",
+      "image": "https://i.imgur.com/9rkN12N.jpeg",
       "variants": [
         "Standard sizes"
       ],
@@ -69,7 +69,7 @@ export const FALLBACK = {
     {
       "name": "U Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "",
+      "image": "https://i.imgur.com/5iptEJY.jpeg",
       "variants": [
         "Standard sizes"
       ],
@@ -78,7 +78,7 @@ export const FALLBACK = {
     {
       "name": "H Bar",
       "subcategory": "Square, Flat & Angle Bars",
-      "image": "",
+      "image": "https://i.imgur.com/0NU8XAy.jpeg",
       "variants": [
         "Standard sizes"
       ],
@@ -87,7 +87,7 @@ export const FALLBACK = {
     {
       "name": "Chicken Wire (කුකුල් දැල්)",
       "subcategory": "Wire & Mesh",
-      "image": "https://images.pexels.com/photos/14686331/pexels-photo-14686331.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "image": "https://i.imgur.com/F1xOk7O.jpeg",
       "variants": [
         "1/2\" x 1/2\"",
         "3/4\" x 3/4\"",
@@ -97,32 +97,56 @@ export const FALLBACK = {
       "order": 7
     },
     {
-      "name": "Airport Net",
+      "name": "Chicken Wire Type 2",
       "subcategory": "Wire & Mesh",
-      "image": "",
+      "image": "https://i.imgur.com/60g9xpO.jpeg",
       "variants": [
-        "Standard"
+        "1/2\" x 1/2\"",
+        "3/4\" x 3/4\"",
+        "1\" x 1\"",
+        "2\" x 2\""
       ],
       "order": 8
     },
     {
+      "name": "Airport Net",
+      "subcategory": "Wire & Mesh",
+      "image": "https://i.imgur.com/J597WAO.jpeg",
+      "variants": [
+        "Standard"
+      ],
+      "order": 9
+    },
+    {
       "name": "Barbed Wire (කටු කම්බි)",
       "subcategory": "Wire & Mesh",
-      "image": "https://images.pexels.com/photos/593101/pexels-photo-593101.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "image": "https://i.imgur.com/mlpBHF6.png",
       "variants": [
         "Gauge 10",
         "Gauge 15",
         "Gauge 20",
         "Gauge 25"
       ],
-      "order": 9
+      "order": 10
+    },
+    {
+      "name": "PVC Barbed Wire",
+      "subcategory": "Wire & Mesh",
+      "image": "https://i.imgur.com/HTtK5pu.png",
+      "variants": [
+        "Gauge 10",
+        "Gauge 15",
+        "Gauge 20",
+        "Gauge 25"
+      ],
+      "order": 11
     }
   ],
   "pipes": [
     {
       "name": "GI Pipe",
       "subcategory": "GI & PVC Pipes",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/0/09/Steel_pipe.jpg",
+      "image": "https://i.imgur.com/DDVKsmO.jpeg",
       "variants": [
         "1/2\"",
         "3/4\"",
@@ -135,7 +159,7 @@ export const FALLBACK = {
     {
       "name": "PVC Pipe",
       "subcategory": "GI & PVC Pipes",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/d/dc/PVC_Pipe.jpg",
+      "image": "https://i.imgur.com/sLmkw1Y.jpeg",
       "variants": [
         "1/2\"",
         "3/4\"",
@@ -148,7 +172,7 @@ export const FALLBACK = {
     {
       "name": "Box Tube",
       "subcategory": "Box Tubes (පට්ටන්)",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/5/58/Piping01.JPG",
+      "image": "https://i.imgur.com/BruKtmm.jpeg",
       "variants": [
         "3/4\" x 3/4\"",
         "1\" x 1\"",
@@ -163,7 +187,7 @@ export const FALLBACK = {
     {
       "name": "Garden Hose",
       "subcategory": "Garden Hose",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Garden_hose.jpg",
+      "image": "https://i.imgur.com/IrrcztS.png",
       "variants": [
         "1/2\"",
         "3/4\"",
@@ -175,7 +199,7 @@ export const FALLBACK = {
     {
       "name": "Irrigation Rope",
       "subcategory": "Irrigation",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Drip_irrigation_(2552390830).jpg",
+      "image": "https://i.imgur.com/CGlEhPv.jpeg",
       "variants": [
         "1'",
         "1.5'",
@@ -187,22 +211,9 @@ export const FALLBACK = {
       "order": 4
     },
     {
-      "name": "Rope Board",
-      "subcategory": "Irrigation",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Irrigation_equipment_-_geograph.org.uk_-_1881393.jpg",
-      "variants": [
-        "1'",
-        "1.5'",
-        "2'",
-        "2.5'",
-        "3'"
-      ],
-      "order": 5
-    },
-    {
       "name": "Irrigation Sprinkler (Dawon / P4 / P7)",
       "subcategory": "Irrigation",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Irrigational_sprinkler.jpg",
+      "image": "https://i.imgur.com/OEHMscT.jpeg",
       "variants": [
         "1/2\"",
         "3/4\"",
@@ -215,14 +226,14 @@ export const FALLBACK = {
         "4\"",
         "6\""
       ],
-      "order": 6
+      "order": 5
     }
   ],
   "sheets": [
     {
       "name": "GI Sheet",
       "subcategory": "GI Sheets (ජලේට්)",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/d/da/Corrugated_metal_roof.jpg",
+      "image": "https://i.imgur.com/9MamN6y.jpeg",
       "variants": [
         "Gauge 14G (1.2mm)",
         "Gauge 2 (1.5mm)",
@@ -239,7 +250,7 @@ export const FALLBACK = {
     {
       "name": "Amano Roofing Sheets",
       "subcategory": "Amano Roofing Sheets",
-      "image": "",
+      "image": "https://i.imgur.com/gPfXeEF.jpeg",
       "variants": [
         "0.20mm",
         "0.30mm",
@@ -253,7 +264,7 @@ export const FALLBACK = {
     {
       "name": "Bolt",
       "subcategory": "Bolts (බෝල්ට්)",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/4/47/Bolt-with-nut.jpg",
+      "image": "https://i.imgur.com/ItAVeMW.jpeg",
       "variants": [
         "5/8\" x 1 1/2\"",
         "3/4\" x 2\"",
@@ -267,7 +278,7 @@ export const FALLBACK = {
     {
       "name": "Spanner Set",
       "subcategory": "Key Items — Spanners & Wrenches",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/0/00/Socket_wrench_and_sockets.JPG",
+      "image": "https://i.imgur.com/O6rJX0d.jpeg",
       "variants": [
         "8mm – 11mm",
         "12mm – 13mm",
@@ -280,7 +291,7 @@ export const FALLBACK = {
     {
       "name": "Castor Wheel",
       "subcategory": "Castor Wheels & Fittings",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Swivel_Caster.jpg",
+      "image": "https://i.imgur.com/CrP7gZD.jpeg",
       "variants": [
         "1 1/2\" (Nom & Lock)",
         "2\" (Nom & Lock)",
@@ -292,7 +303,7 @@ export const FALLBACK = {
     {
       "name": "Rack Bracket",
       "subcategory": "Castor Wheels & Fittings",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Three_white_metallic_shelf_brackets_-_B.jpg",
+      "image": "https://i.imgur.com/dOUj4Qi.jpeg",
       "variants": [
         "5x6\"",
         "6x8\"",
@@ -305,7 +316,7 @@ export const FALLBACK = {
     {
       "name": "Hinges (සරනේරු)",
       "subcategory": "Castor Wheels & Fittings",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Door_Hinge.jpg",
+      "image": "https://i.imgur.com/sp1ZkCA.jpeg",
       "variants": [
         "Assorted sizes"
       ],
@@ -314,7 +325,7 @@ export const FALLBACK = {
     {
       "name": "Bushing",
       "subcategory": "Bushings & Site Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/8/86/Alu-pex-fitting.jpg",
+      "image": "https://i.imgur.com/NSJnh9l.jpeg",
       "variants": [
         "5/8\" x 1 1/2\"",
         "5/8\" x 2\"",
@@ -340,7 +351,7 @@ export const FALLBACK = {
     {
       "name": "Mason Trowel",
       "subcategory": "Bushings & Site Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Masons_trowel.jpg",
+      "image": "https://i.imgur.com/jgu1W2P.jpeg",
       "variants": [
         "5\"",
         "6\"",
@@ -355,7 +366,7 @@ export const FALLBACK = {
     {
       "name": "Scraper",
       "subcategory": "Bushings & Site Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8c/HandScrapers.jpg",
+      "image": "https://i.imgur.com/BLeCCyP.jpeg",
       "variants": [
         "2\"",
         "2 1/2\"",
@@ -369,7 +380,7 @@ export const FALLBACK = {
     {
       "name": "Anchor Bolt",
       "subcategory": "Bushings & Site Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Anchor_Bolt_Assembly_Detail_VT_(8495187427).jpg",
+      "image": "https://i.imgur.com/FxbR6du.jpeg",
       "variants": [
         "6mm",
         "8mm",
@@ -381,7 +392,7 @@ export const FALLBACK = {
     {
       "name": "Conduit Pipe",
       "subcategory": "Electrical Fittings",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/2/23/Plastic_tubing.jpg",
+      "image": "https://i.imgur.com/Ys9Vxpk.jpeg",
       "variants": [
         "2",
         "2 1/2",
@@ -395,7 +406,7 @@ export const FALLBACK = {
     {
       "name": "Cable",
       "subcategory": "Electrical Fittings",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Large_Voltage_Electrical_Cable.jpg",
+      "image": "https://i.imgur.com/M5hlsQ4.jpeg",
       "variants": [
         "2",
         "2 1/2",
@@ -407,34 +418,20 @@ export const FALLBACK = {
       "order": 10
     },
     {
-      "name": "Galvanized Strip",
-      "subcategory": "Electrical Fittings",
-      "image": "",
-      "variants": [
-        "2",
-        "2 1/2",
-        "3",
-        "4",
-        "5",
-        "6"
-      ],
-      "order": 11
-    },
-    {
       "name": "Additional Items (ask in-store — catalog ref. 204-211)",
       "subcategory": "Other Items",
       "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Bolts_and_Nuts.jpg",
       "variants": [
         "Standard"
       ],
-      "order": 12
+      "order": 11
     }
   ],
   "welding": [
     {
       "name": "Welding Service",
       "subcategory": "Welding & Cutting Service",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/a/aa/GMAW.welding.af.ncs.jpg",
+      "image": "https://i.imgur.com/pkNrHiN.jpeg",
       "variants": [
         "In-store or on-site"
       ],
@@ -443,7 +440,7 @@ export const FALLBACK = {
     {
       "name": "Iron Cutting Service",
       "subcategory": "Welding & Cutting Service",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/0/0b/589_welding.jpg",
+      "image": "https://i.imgur.com/TOvnQyk.jpeg",
       "variants": [
         "Cut to your size"
       ],
@@ -452,7 +449,7 @@ export const FALLBACK = {
     {
       "name": "Welding Plant",
       "subcategory": "Welding Plants",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Welding_Machine_001.jpg",
+      "image": "https://i.imgur.com/uHuzWuC.jpeg",
       "variants": [
         "150A",
         "200A",
@@ -463,7 +460,7 @@ export const FALLBACK = {
     {
       "name": "Angle Grinder",
       "subcategory": "Power Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Grinder_diamond_blade.jpg",
+      "image": "https://i.imgur.com/mNmjNK6.jpeg",
       "variants": [
         "4\"",
         "4 1/2\"",
@@ -474,7 +471,7 @@ export const FALLBACK = {
     {
       "name": "Drill Machine",
       "subcategory": "Power Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Drill-driver.JPG",
+      "image": "https://i.imgur.com/lqu7gSN.jpeg",
       "variants": [
         "10mm",
         "13mm",
@@ -485,7 +482,7 @@ export const FALLBACK = {
     {
       "name": "Blower",
       "subcategory": "Power Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Leaf_blower_in_a_garage.jpg",
+      "image": "https://i.imgur.com/yl6d5WQ.jpeg",
       "variants": [
         "Electric"
       ],
@@ -494,7 +491,7 @@ export const FALLBACK = {
     {
       "name": "Pressure Gun",
       "subcategory": "Power Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/3/30/Pressure_Washer.JPG",
+      "image": "https://i.imgur.com/QPjcz8x.jpeg",
       "variants": [
         "Electric"
       ],
@@ -503,7 +500,7 @@ export const FALLBACK = {
     {
       "name": "Water Pump",
       "subcategory": "Power Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/PRAKASH_1.5_HP_CENTRIFUGAL_PUMP.jpg",
+      "image": "https://i.imgur.com/s4iTk7G.jpeg",
       "variants": [
         "Electric"
       ],
@@ -512,7 +509,7 @@ export const FALLBACK = {
     {
       "name": "Argon Gas",
       "subcategory": "Power Tools",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/3/38/Gas_cylinders_used_in_arc_welding.jpg",
+      "image": "https://i.imgur.com/92PO1Fo.jpeg",
       "variants": [
         "Standard"
       ],
