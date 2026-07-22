@@ -14,7 +14,7 @@ export const FALLBACK = {
     {
       "name": "Rebar Mesh",
       "subcategory": "Rebar Mesh (දැල්)",
-      "image": "",
+      "image": "https://cdn.pixabay.com/photo/2018/10/09/08/10/construction-3734383_1280.jpg",
       "variants": [
         "2¼\" x 2¼\"",
         "2½\" x 2½\""
