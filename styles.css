@@ -47,10 +47,9 @@ header{
 .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto;gap:16px;}
 .brand{display:flex;align-items:center;gap:12px;}
 .brand-mark{
-  width:44px;height:44px;flex-shrink:0;background:var(--brand-red);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;
-  font-size:15px;border-radius:6px;letter-spacing:0.5px;line-height:1;
+  height:40px;flex-shrink:0;display:flex;align-items:center;
 }
+.brand-mark img{height:100%;width:auto;display:block;}
 .brand-word{display:flex;flex-direction:column;line-height:1.15;}
 .brand-word .en{font-family:'Anton',sans-serif;font-size:16px;letter-spacing:0.5px;}
 .brand-word .si{font-size:11px;color:var(--paper-dim);font-family:'Work Sans',sans-serif;}
